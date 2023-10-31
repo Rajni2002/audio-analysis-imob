@@ -39,20 +39,9 @@ def analyze_audio_features(audio):
     # Convert audio to PCM data
     pcm_data = audio.get_wav_data(convert_rate=44100, convert_width=2)
 
-    # Create a Sound object from PCM data
-    # sound = parselmouth.Sound(pcm_data, sampling_frequency=44100)
-
-    # Calculate pitch
-    # pitch = sound.to_pitch()
-    # mean_pitch = np.nanmean(pitch.selected_array['frequency'])
-
     # Calculate loudness (volume)
     audio_segment = AudioSegment.from_wav(io.BytesIO(pcm_data))
     loudness = audio_segment.dBFS
-
-    # Calculate tonality
-    # harmonicity = sound.to_harmonicity()
-    # mean_harmonicity = np.nanmean(harmonicity.values)
 
     return loudness
 
